@@ -10,20 +10,30 @@ userApp.controller('MainCtrl',['$http',function ($http) {
 
     self.users = [] ;
 
+    self.query = {
+        gender: '男',
+        name:'',
+        phoneNumber:''
+    };
+
     self.search = function () {
 
+        /*
         var querys = {
             name:$('#name').val(),
             phoneNumber:$('#phoneNumber').val(),
             gender:$('input[name=gender]:checked').val()
         };
 
+
+
         console.log( querys );
+        */
 
         $http({
             method: 'GET',
             url: './users.do',
-            params: querys
+            params: self.query
         }).success(function (data, status, header, config) {
             console.log(data.data);
             self.users = data.data ;
